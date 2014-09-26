@@ -5,5 +5,6 @@ Note:  This project requires [OpenLayers 3](https://github.com/openlayers/ol3/re
 ### Next Steps
 * Display location related content synced with zoom animation
 * Provide additional content
-  * Date
-  * Text
+  * Start Date and End Date
+* Timeline style animation (but with Year counter rather than timeline)
+* Animation speed based on time spend at a given location
