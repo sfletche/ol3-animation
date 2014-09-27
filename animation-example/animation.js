@@ -32,55 +32,55 @@ app.displayAddedLocation = function(location) {
 
 app.assignTestLocations = function() {
     app.locations = [
-        // {
-        //     'location_name': 'Palo Alto, California',
-        //     'start_date': '1970',
-        //     'end_date': '1973',
-        //     'center': [-13599769.092903735, 4501691.122649623],
-        //     'zoom': 12
-        // },
-        // {
-        //     'location_name': 'Chicago, Illinois',
-        //     'start_date': '1973',
-        //     'end_date': '1974',
-        //     'center': [-9791652.457164913, 5140704.679113694],
-        //     'zoom': 9
-        // },
-        // {
-        //     'location_name': 'San Diego, California',
-        //     'start_date': '1974',
-        //     'end_date': '1977',
-        //     'center': [-13045543.88285731, 3861234.9352657003],
-        //     'zoom': 11
-        // },
-        // {
-        //     'location_name': 'Huntington Beach, California',
-        //     'start_date': '1977',
-        //     'end_date': '1978',
-        //     'center': [-13134612.858978685, 3983632.804352021],
-        //     'zoom': 11
-        // },
-        // {
-        //     'location_name': 'Vienna, Virginia',
-        //     'start_date': '1978',
-        //     'end_date': '1981',
-        //     'center': [-8603108.966488985, 4707135.661937859],
-        //     'zoom': 15
-        // },
-        // {
-        //     'location_name': 'Orem, Utah',
-        //     'start_date': '1981',
-        //     'end_date': '1983',
-        //     'center': [-12430871.411407793, 4904306.100473413],
-        //     'zoom': 12
-        // },
-        // {
-        //     'location_name': 'Eugene, Oregon',
-        //     'start_date': '1983',
-        //     'end_date': '1985',
-        //     'center': [-13701206.9363964, 5471191.766121895],
-        //     'zoom': 14
-        // },
+        {
+            'location_name': 'Palo Alto, California',
+            'start_date': '1970',
+            'end_date': '1973',
+            'center': [-13599769.092903735, 4501691.122649623],
+            'zoom': 12
+        },
+        {
+            'location_name': 'Chicago, Illinois',
+            'start_date': '1973',
+            'end_date': '1974',
+            'center': [-9791652.457164913, 5140704.679113694],
+            'zoom': 9
+        },
+        {
+            'location_name': 'San Diego, California',
+            'start_date': '1974',
+            'end_date': '1977',
+            'center': [-13045543.88285731, 3861234.9352657003],
+            'zoom': 11
+        },
+        {
+            'location_name': 'Huntington Beach, California',
+            'start_date': '1977',
+            'end_date': '1978',
+            'center': [-13134612.858978685, 3983632.804352021],
+            'zoom': 11
+        },
+        {
+            'location_name': 'Vienna, Virginia',
+            'start_date': '1978',
+            'end_date': '1981',
+            'center': [-8603108.966488985, 4707135.661937859],
+            'zoom': 15
+        },
+        {
+            'location_name': 'Orem, Utah',
+            'start_date': '1981',
+            'end_date': '1983',
+            'center': [-12430871.411407793, 4904306.100473413],
+            'zoom': 12
+        },
+        {
+            'location_name': 'Eugene, Oregon',
+            'start_date': '1983',
+            'end_date': '1985',
+            'center': [-13701206.9363964, 5471191.766121895],
+            'zoom': 14
+        },
         {
             'location_name': 'Vienna, Virginia',
             'start_date': '1985',
@@ -217,12 +217,11 @@ app.showAnimation = function(location, noBounce) {
         }),
         zoom = ol.animation.zoom({
             resolution: map.getView().getResolution(),
-            duration: duration / 2
+            duration: duration / 4
         });
     if (resolution_from_distance < 20) {
         resolution_from_distance = 20;
     }
-    console.log(resolution_from_distance);
     if (noBounce) {
         app.map.beforeRender(zoom);    
     } else {
