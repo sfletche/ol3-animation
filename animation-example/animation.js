@@ -4,22 +4,27 @@ app.saveLocation = function() {
     var location_name = document.getElementById('location').value;
     if (location_name !== "") {
         var location = {
-            'location': location_name,
+            'location': location_name,        
             'center': app.map.getView().getCenter(),
             'zoom': app.map.getView().getZoom() 
         };
         app.locations.push(location);
         document.getElementById('instructions').innerHTML="Set your next location.";
-        app.displayAddedLocation(location_name);
+        // app.displayAddedLocation(location_name);
     }        
     document.getElementById('location').value="";
 };
 
-app.displayAddedLocation = function(location_name) {
+app.displayAddedLocation = function(location) {
     var div = document.createElement("div");
     div.style.opacity = 0;
     div.className = "single-location";
-    div.appendChild(document.createTextNode(location_name));
+    if (location.start_date === location.end_date) {
+        var output = location.location_name + ' (' + location.start_date  + ')';
+    } else {
+        var output = location.location_name + ' (' + location.start_date + '-' + location.end_date + ')';
+    }
+    div.appendChild(document.createTextNode(output));
     document.getElementById('recorded-locations').appendChild(div); 
     window.getComputedStyle(div).opacity;   
     div.style.opacity = 1;
@@ -27,55 +32,55 @@ app.displayAddedLocation = function(location_name) {
 
 app.assignTestLocations = function() {
     app.locations = [
-        {
-            'location_name': 'Palo Alto, California',
-            'start_date': '1970',
-            'end_date': '1973',
-            'center': [-13599769.092903735, 4501691.122649623],
-            'zoom': 12
-        },
-        {
-            'location_name': 'Chicago, Illinois',
-            'start_date': '1973',
-            'end_date': '1974',
-            'center': [-9791652.457164913, 5140704.679113694],
-            'zoom': 9
-        },
-        {
-            'location_name': 'San Diego, California',
-            'start_date': '1974',
-            'end_date': '1977',
-            'center': [-13045543.88285731, 3861234.9352657003],
-            'zoom': 11
-        },
-        {
-            'location_name': 'Huntington Beach, California',
-            'start_date': '1977',
-            'end_date': '1978',
-            'center': [-13134612.858978685, 3983632.804352021],
-            'zoom': 11
-        },
-        {
-            'location_name': 'Vienna, Virginia',
-            'start_date': '1978',
-            'end_date': '1981',
-            'center': [-8603108.966488985, 4707135.661937859],
-            'zoom': 15
-        },
-        {
-            'location_name': 'Orem, Utah',
-            'start_date': '1981',
-            'end_date': '1983',
-            'center': [-12430871.411407793, 4904306.100473413],
-            'zoom': 12
-        },
-        {
-            'location_name': 'Eugene, Oregon',
-            'start_date': '1983',
-            'end_date': '1985',
-            'center': [-13701206.9363964, 5471191.766121895],
-            'zoom': 14
-        },
+        // {
+        //     'location_name': 'Palo Alto, California',
+        //     'start_date': '1970',
+        //     'end_date': '1973',
+        //     'center': [-13599769.092903735, 4501691.122649623],
+        //     'zoom': 12
+        // },
+        // {
+        //     'location_name': 'Chicago, Illinois',
+        //     'start_date': '1973',
+        //     'end_date': '1974',
+        //     'center': [-9791652.457164913, 5140704.679113694],
+        //     'zoom': 9
+        // },
+        // {
+        //     'location_name': 'San Diego, California',
+        //     'start_date': '1974',
+        //     'end_date': '1977',
+        //     'center': [-13045543.88285731, 3861234.9352657003],
+        //     'zoom': 11
+        // },
+        // {
+        //     'location_name': 'Huntington Beach, California',
+        //     'start_date': '1977',
+        //     'end_date': '1978',
+        //     'center': [-13134612.858978685, 3983632.804352021],
+        //     'zoom': 11
+        // },
+        // {
+        //     'location_name': 'Vienna, Virginia',
+        //     'start_date': '1978',
+        //     'end_date': '1981',
+        //     'center': [-8603108.966488985, 4707135.661937859],
+        //     'zoom': 15
+        // },
+        // {
+        //     'location_name': 'Orem, Utah',
+        //     'start_date': '1981',
+        //     'end_date': '1983',
+        //     'center': [-12430871.411407793, 4904306.100473413],
+        //     'zoom': 12
+        // },
+        // {
+        //     'location_name': 'Eugene, Oregon',
+        //     'start_date': '1983',
+        //     'end_date': '1985',
+        //     'center': [-13701206.9363964, 5471191.766121895],
+        //     'zoom': 14
+        // },
         {
             'location_name': 'Vienna, Virginia',
             'start_date': '1985',
@@ -190,26 +195,34 @@ app.showAnimations = function(location, x, noBounce) {
     setTimeout( function() {
         if (x == 0) {}
         app.showAnimation(location, noBounce);
-        app.displayAddedLocation(location.location_name);
+        app.displayAddedLocation(location);
     }, 5000 * x);
 };
 
 app.showAnimation = function(location, noBounce) {        
-    var view = app.map.getView();
-    var duration = 4000;
-    var start = +new Date();
-    var pan = ol.animation.pan({
-        duration: duration,
-        source: (view.getCenter())
-    });
-    var bounce = ol.animation.bounce({
-        duration: duration,
-        resolution: 7000
-    });
-    var zoom = ol.animation.zoom({
-        resolution: map.getView().getResolution(),
-        duration: duration / 2
-    });
+    var view = app.map.getView(),
+        center = view.getCenter(),
+        distance = Math.sqrt(Math.pow(center[0]-location.center[0],2)+Math.pow(center[1]-location.center[1],2)),
+        resolution_from_distance = distance / 1000,
+        duration = 4000,
+        start = +new Date(),
+        pan = ol.animation.pan({
+            duration: duration,
+            source: (view.getCenter())
+        }),
+        bounce = ol.animation.bounce({
+            duration: duration,
+            // resolution: 7000
+            resolution: resolution_from_distance
+        }),
+        zoom = ol.animation.zoom({
+            resolution: map.getView().getResolution(),
+            duration: duration / 2
+        });
+    if (resolution_from_distance < 20) {
+        resolution_from_distance = 20;
+    }
+    console.log(resolution_from_distance);
     if (noBounce) {
         app.map.beforeRender(zoom);    
     } else {
