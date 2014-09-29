@@ -1,8 +1,3 @@
-app = {};
-
-var london = ol.proj.transform([-0.12755, 51.507222], 'EPSG:4326', 'EPSG:3857');
-var bern = ol.proj.transform([7.4458, 46.95], 'EPSG:4326', 'EPSG:3857');
-var istanbul = ol.proj.transform([28.9744, 41.0128], 'EPSG:4326', 'EPSG:3857');
 var usa = ol.proj.transform([-99, 39], 'EPSG:4326', 'EPSG:3857');
 
 var view = new ol.View({
@@ -36,7 +31,7 @@ var map = new ol.Map({
     markers,
   ],
   renderer: exampleNS.getRendererFromQueryString(),
-  target: 'map',
+  target: document.getElementById('map'),
   controls: ol.control.defaults({
     attributionOptions: /** @type {olx.control.AttributionOptions} */ ({
       collapsible: false
