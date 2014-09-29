@@ -5,7 +5,12 @@ Note:  This project requires [OpenLayers 3](https://github.com/openlayers/ol3/re
 ### Next Steps
 * Display location related content synced with zoom animation
 * Provide additional content
-  * Start Date and End Date
-* Timeline style animation (but with Year counter rather than timeline)
-* Animation speed based on time spend at a given location
+* add forward/backward arrows/indicators to map so users can advance at their own pace
+  * this will also provide the space for multiple markers at a given map view
+* enable marker add functionality 
+  * users can add/position multiple markers at each map location
+  * 
+
+### Complete
 * Bounce resolution based on distance between locations (higher bounce resolution for larger distances)
+* Start Date and End Date
