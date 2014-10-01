@@ -34,6 +34,7 @@ app.showTimeline = function() {
     var x = 0;
     if (!app.locations.length) {
         app.assignTestLocations();
+        // app.addCarouselIndicators();
     }
     for (var index in app.locations) {
         var location = app.locations[index];  

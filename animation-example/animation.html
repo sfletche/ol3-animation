@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="../../openlayers3/resources/layout.css" type="text/css">
         <!-- <link rel="stylesheet" href="../../openlayers3/resources/bootstrap/css/bootstrap-responsive.min.css" type="text/css"> -->
         <link rel="stylesheet" href="../../bootstrap-3.2.0/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="../../font-awesome-4.2.0/css/font-awesome.min.css" type="text/css">
         
         <title>Animation example</title>
 
@@ -27,6 +28,50 @@
             #popup {
                 padding-bottom: 45px;
             }
+            .btn-default {
+                margin-top: 10px;
+            }
+            #map-carousel {
+              width: 100%;
+            }
+            #map-carousel-controls .carousel-control {
+                margin-top: 25px;
+                top: inherit;
+                bottom: inherit;
+                color: #333;                
+            }            
+            #map-carousel ul {
+                /* Make ul take 100% of its parent's width */
+                width: 70%;
+
+                list-style: none;
+                padding: 0;
+                margin-left: 15%;
+                margin-right: 15%;
+            }
+            #map-carousel li {
+                /* Float the li's left and give them 20% width (20% * 5 = 100%) */
+                float: left;
+                /*width: 25%;*/
+
+                /* Make sure no horizontal padding/margin is applied.  Since we've set an 
+                   explicit width on the li, horizontal padding/margins would add to this, 
+                   making the element greater than 20% width and causing float drop */        
+                margin: 12px 0 0 0;
+                padding: 6px 0;   
+            }
+            #map-carousel li a {
+                /* Set the nested links to display block and align their text center */
+                display: block;
+                text-align: center;
+
+                /* Here we can safely apply horizontal padding/margins because we haven't
+                   explicitly set a width on the element */
+                margin: 0 6px 0 0;
+                padding: 0 20px;
+
+            }
+            
     </style>
     </head>
     
@@ -51,13 +96,30 @@
                         <div>
                             Location Name: <input id="location" type="text" name="location"> 
                         </div>                        
-                        <a class="btn" onclick="app.saveLocation()">Save Location</a>
+                        <a class="btn btn-default" onclick="app.saveLocation()">Save Location</a>
                    </form>
                    <h2>When Finished</h2>
-                   <a class="btn" onclick="app.showTimeline()">Show Timeline</a> 
+                   <a class="btn btn-default" onclick="app.showTimeline()">Show Timeline</a> 
                 </div>
                 <div class="col-md-6">
-                    <div id="map" class="map"><div id="popup"></div></div>
+                    <div id="map" class="map">
+                        <div id="popup"></div>
+                    </div>
+
+                    <div id="map-carousel">
+                        <!-- Controls -->
+                        <div id="map-carousel-controls">            
+                            <a class="left carousel-control" >
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                            </a>               
+                            <ul id="map-carousel-indicators"></ul> 
+                            <a class="right carousel-control">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                <!-- <i class="fa fa-circle-o"></i> -->
+                            </a>
+                        </div>
+
+                    </div>
 
                 </div>                
                 
