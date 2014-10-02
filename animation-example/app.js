@@ -15,7 +15,8 @@ app.addCarouselIndicators = function() {
         li.style.width = width + '%';
 
         var anchor = document.createElement("a");
-        anchor.setAttribute('href',"");    
+        anchor.className = "carousel-indicator";
+        anchor.setAttribute("onclick","app.flyTo("+i+"); app.activateAnchor(this);"); 
 
         var icon = document.createElement("icon");
         icon.className = "fa fa-circle-o";
@@ -25,7 +26,15 @@ app.addCarouselIndicators = function() {
         
         document.getElementById('map-carousel-indicators').appendChild(li); 
     }
-}
+};
+
+app.activateAnchor = function(anchor) {
+    allAnchors = document.getElementsByClassName('carousel-indicator');
+    for (var i=0; i < allAnchors.length; i++) {
+        allAnchors[i].getElementsByTagName("icon")[0].className = "fa fa-circle-o";
+    }
+    anchor.getElementsByTagName("icon")[0].className = "fa fa-circle";
+};
 
 app.assignTestLocations = function() {
     app.locations = [

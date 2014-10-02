@@ -1,4 +1,3 @@
-app.locations = [];
 
 app.saveLocation = function() {
     var location_name = document.getElementById('location').value;
@@ -45,6 +44,11 @@ app.showTimeline = function() {
         }        
         x++;
     }
+};
+
+app.flyTo = function(index) {
+    app.showAnimation(app.locations[index], true);
+    return false;
 };
 
 app.showAnimations = function(location, x, noBounce) {
