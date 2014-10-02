@@ -40,10 +40,6 @@ var map = new ol.Map({
   view: view
 });
 
-map.on('show', function() {
-  alert('show!');
-});
-
 app.map = map;
 app.markers = markers;
 
