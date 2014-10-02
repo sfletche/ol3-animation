@@ -14,9 +14,14 @@ app.addCarouselIndicators = function() {
         li.className = "carousel-indicator-" + i; 
         li.style.width = width + '%';
 
+        var anchor = document.createElement("a");
+        anchor.setAttribute('href',"");    
+
         var icon = document.createElement("icon");
         icon.className = "fa fa-circle-o";
-        li.appendChild(icon);
+        anchor.appendChild(icon);
+
+        li.appendChild(anchor);
         
         document.getElementById('map-carousel-indicators').appendChild(li); 
     }
