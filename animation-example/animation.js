@@ -1,3 +1,4 @@
+app.animationIndex = undefined;
 
 app.saveLocation = function() {
     var location_name = document.getElementById('location').value;
@@ -14,7 +15,8 @@ app.saveLocation = function() {
     document.getElementById('location').value="";
 };
 
-app.displayAddedLocation = function(location) {
+app.displayAddedLocation = function(index) {
+    var location = app.locations[index]; 
     var div = document.createElement("div");
     div.style.opacity = 0;
     div.className = "single-location";
@@ -35,32 +37,49 @@ app.showTimeline = function() {
         app.assignTestLocations();
         // app.addCarouselIndicators();
     }
-    for (var index in app.locations) {
-        var location = app.locations[index];  
+    for (var index in app.locations) {         
         if (x == 0) {
-            app.showAnimations(location, x, true);    
+            app.showAnimations(x, true);    
         } else {
-            app.showAnimations(location, x);
+            app.showAnimations(x);
         }        
         x++;
     }
 };
 
 app.flyTo = function(index) {
-    app.showAnimation(app.locations[index], false);
+    app.showAnimation(index);
     return false;
 };
 
-app.showAnimations = function(location, x, noBounce) {
-    setTimeout( function() {
-        if (x == 0) {}
-        app.showAnimation(location, noBounce);
-        app.displayAddedLocation(location);
-    }, 5000 * x);
+app.flyLeft = function() {
+    var newIndex = app.locations.length - 1;
+    if (app.animationIndex && app.animationIndex > 0) {
+        newIndex = app.animationIndex - 1;
+    }
+    app.showAnimation(newIndex);
+    app.activateAnchor(newIndex);
 };
 
-app.showAnimation = function(location, noBounce) {        
-    var view = app.map.getView(),
+app.flyRight = function() {
+    var newIndex = 0;
+    if (app.animationIndex !== undefined && app.animationIndex < app.locations.length - 1) {
+        newIndex = app.animationIndex + 1;
+    }
+    app.showAnimation(newIndex);  
+    app.activateAnchor(newIndex);
+}
+
+app.showAnimations = function(index, noBounce) {
+    setTimeout( function() {
+        app.showAnimation(index, noBounce);
+        app.displayAddedLocation(index);
+    }, 5000 * index);
+};
+
+app.showAnimation = function(index, noBounce) { 
+    var location = app.locations[index],
+        view = app.map.getView(),
         center = view.getCenter(),
         distance = Math.sqrt(Math.pow(center[0]-location.center[0],2)+Math.pow(center[1]-location.center[1],2)),
         resolution_from_distance = distance / 1000,
@@ -94,5 +113,7 @@ app.showAnimation = function(location, noBounce) {
         geometry: new ol.geom.Point(location.center),
         name: location.location_name
     }));
+
+    app.animationIndex = index;  
 };
 
