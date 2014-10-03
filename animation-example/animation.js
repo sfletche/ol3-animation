@@ -78,6 +78,7 @@ app.showAnimations = function(index, noBounce) {
 };
 
 app.showAnimation = function(index, noBounce) { 
+    app.destroyPopup();
     var location = app.locations[index],
         view = app.map.getView(),
         center = view.getCenter(),
