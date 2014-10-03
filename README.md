@@ -7,10 +7,6 @@ Note:  This project requires [OpenLayers 3](https://github.com/openlayers/ol3/re
 * Provide additional content
 * add forward/backward arrows/indicators to map so users can advance at their own pace
   * this will also provide the space for multiple markers at a given map view
-* enable marker add functionality 
-  * users can add/position multiple markers at each map location
-  * 
+n
 
-### Complete
-* Bounce resolution based on distance between locations (higher bounce resolution for larger distances)
-* Start Date and End Date
+
