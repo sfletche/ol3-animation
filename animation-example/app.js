@@ -23,6 +23,10 @@ app.addCarouselIndicators = function() {
         anchor.appendChild(icon);
 
         li.appendChild(anchor);
+
+        li.onclick = function() {
+            app.destroyPopup();
+        };
         
         document.getElementById('map-carousel-indicators').appendChild(li); 
     }
