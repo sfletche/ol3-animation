@@ -47,7 +47,7 @@ app.showTimeline = function() {
 };
 
 app.flyTo = function(index) {
-    app.showAnimation(app.locations[index], true);
+    app.showAnimation(app.locations[index], false);
     return false;
 };
 
