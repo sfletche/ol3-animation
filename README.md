@@ -3,10 +3,7 @@
 Note:  This project requires [OpenLayers 3](https://github.com/openlayers/ol3/releases) to be installed at the same base directory.  
 
 ### Next Steps
-* Display location related content synced with zoom animation
-* Provide additional content
-* add forward/backward arrows/indicators to map so users can advance at their own pace
-  * this will also provide the space for multiple markers at a given map view
+* add potential for multiple markers at a given map view
 n
 
 
