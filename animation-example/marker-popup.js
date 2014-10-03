@@ -1,14 +1,19 @@
-var element = document.getElementById('popup');
+var popupElement = document.getElementById('popup');
 
 var popup = new ol.Overlay({
-  element: element,
+  element: popupElement,
   positioning: 'bottom-center',
   stopEvent: false
 });
 app.map.addOverlay(popup);
 
+app.destroyPopup = function() {
+  $(popupElement).popover('destroy');
+}
+
 // display popup on click
 app.map.on('click', function(evt) {
+  app.destroyPopup();
   var feature = app.map.forEachFeatureAtPixel(evt.pixel,
       function(feature, layer) {
         return feature;
@@ -17,15 +22,13 @@ app.map.on('click', function(evt) {
     var geometry = feature.getGeometry();
     var coord = geometry.getCoordinates();
     popup.setPosition(coord);
-    $(element).popover({
+    $(popupElement).popover({
       'placement': 'top',
       'html': true,
       'content': feature.get('name')
     });
-    $(element).popover('show');
-  } else {
-    $(element).popover('destroy');
-  }
+    $(popupElement).popover('show');
+  } 
 });
 
 // change mouse cursor when over marker
