@@ -48,7 +48,10 @@ app.showTimeline = function() {
 };
 
 app.flyTo = function(index) {
-    app.showAnimation(index);
+    if (app.animationIndex === undefined) {
+        var noBounce = true;
+    }
+    app.showAnimation(index, noBounce);
     return false;
 };
 
@@ -57,7 +60,7 @@ app.flyLeft = function() {
     if (app.animationIndex && app.animationIndex > 0) {
         newIndex = app.animationIndex - 1;
     }
-    app.showAnimation(newIndex);
+    app.flyTo(newIndex);
     app.activateAnchor(newIndex);
 };
 
@@ -65,8 +68,8 @@ app.flyRight = function() {
     var newIndex = 0;
     if (app.animationIndex !== undefined && app.animationIndex < app.locations.length - 1) {
         newIndex = app.animationIndex + 1;
-    }
-    app.showAnimation(newIndex);  
+    } 
+    app.flyTo(newIndex);
     app.activateAnchor(newIndex);
 }
 
