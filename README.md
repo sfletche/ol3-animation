@@ -8,5 +8,4 @@ Note:  This project requires [OpenLayers 3](https://github.com/openlayers/ol3/re
 * how to display marker popups...?
  * display marker popups after fly to?  
  * one at a time?
-
-
+* do a little refactoring...encapsulate methods and variables better...
