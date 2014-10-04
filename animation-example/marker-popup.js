@@ -9,7 +9,7 @@ app.map.addOverlay(popup);
 
 app.destroyPopup = function() {
   $(popupElement).popover('destroy');
-}
+};
 
 // display popup on click
 app.map.on('click', function(evt) {

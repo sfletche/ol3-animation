@@ -51,11 +51,11 @@ app.assignTestLocations = function() {
             'zoom': 12,
             'markers': [
                 {
-                    'position': [-13599769.092903735, 4501691.122649623],
+                    'position': [-13605836.282023875, 4507476.731246452],
                     'content': 'Born in 1970 at Redwood City Hospital'
                 },
                 {
-                    'position': [-13599769.092903735, 4501691.122649623],
+                    'position': [-13599833.586646348, 4501679.460382442],
                     'content': 'Spent first 3 years near the campus of Stanford University in Palo Alto'
                 }
             ]

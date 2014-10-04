@@ -21,6 +21,7 @@ var markers = new ol.layer.Vector({
     })
   })
 });
+app.markers = markers;
 
 var map = new ol.Map({
   layers: [
@@ -39,9 +40,7 @@ var map = new ol.Map({
   }),
   view: view
 });
-
 app.map = map;
-app.markers = markers;
 
 function onMoveEnd(evt) {
   var map = evt.map;

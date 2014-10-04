@@ -85,6 +85,7 @@ app.showAnimation = function(index, noBounce) {
     var location = app.locations[index],
         view = app.map.getView(),
         center = view.getCenter(),
+        markers = location.markers,
         distance = Math.sqrt(Math.pow(center[0]-location.center[0],2)+Math.pow(center[1]-location.center[1],2)),
         resolution_from_distance = distance / 1000,
         duration = 4000,
@@ -113,10 +114,13 @@ app.showAnimation = function(index, noBounce) {
     
     view.setCenter(location.center);  
     view.setZoom(location.zoom);
-    app.markers.getSource().addFeature(new ol.Feature({
-        geometry: new ol.geom.Point(location.center),
-        name: location.location_name
-    }));
+    for (var i=0; i<markers.length; i++) {  
+        var marker = markers[i];      
+        app.markers.getSource().addFeature(new ol.Feature({
+            geometry: new ol.geom.Point(marker.position),
+            name: marker.content
+        }));
+    }
 
     app.animationIndex = index;  
 };
