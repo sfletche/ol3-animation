@@ -48,7 +48,17 @@ app.assignTestLocations = function() {
             'start_date': '1970',
             'end_date': '1973',
             'center': [-13599769.092903735, 4501691.122649623],
-            'zoom': 12
+            'zoom': 12,
+            'markers': [
+                {
+                    'position': [-13599769.092903735, 4501691.122649623],
+                    'content': 'Born in 1970 at Redwood City Hospital'
+                },
+                {
+                    'position': [-13599769.092903735, 4501691.122649623],
+                    'content': 'Spent first 3 years near the campus of Stanford University in Palo Alto'
+                }
+            ]
         },
         {
             'location_name': 'Chicago, Illinois',
