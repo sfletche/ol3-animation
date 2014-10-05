@@ -1,19 +1,13 @@
 var usa = ol.proj.transform([-99, 39], 'EPSG:4326', 'EPSG:3857');
 
 var view = new ol.View({
-  // the view's initial state
   center: usa,
   zoom: 3
 });
 
 var markers = new ol.layer.Vector({
   source: new ol.source.Vector({
-    features: [
-      // new ol.Feature({
-      //   geometry: new ol.geom.Point(usa),
-      //   name: 'USA'
-      // })
-    ]
+    features: []
   }),
   style: new ol.style.Style({
     image: new ol.style.Icon({
