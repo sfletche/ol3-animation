@@ -9,3 +9,4 @@ Note:  This project requires [OpenLayers 3](https://github.com/openlayers/ol3/re
  * display marker popups after fly to?  
  * one at a time?
 * do a little refactoring...encapsulate methods and variables better...
+* what to do when user clicks currently active indicator...?
