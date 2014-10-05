@@ -114,12 +114,15 @@ app.showAnimation = function(index, noBounce) {
     
     view.setCenter(location.center);  
     view.setZoom(location.zoom);
-    for (var i=0; i<markers.length; i++) {  
-        var marker = markers[i];      
-        app.markers.getSource().addFeature(new ol.Feature({
-            geometry: new ol.geom.Point(marker.position),
-            name: marker.content
-        }));
+    
+    if (markers) {        
+        for (var i=0; i<markers.length; i++) {  
+            var marker = markers[i];      
+            app.markers.getSource().addFeature(new ol.Feature({
+                geometry: new ol.geom.Point(marker.position),
+                name: marker.content
+            }));
+        }
     }
 
     app.animationIndex = index;  
