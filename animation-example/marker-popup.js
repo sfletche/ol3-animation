@@ -7,6 +7,8 @@ var popup = new ol.Overlay({
 });
 app.map.addOverlay(popup);
 
+// grabbed from stackoverflow
+// http://stackoverflow.com/questions/10238089/how-can-you-ensure-twitter-bootstrap-popover-windows-are-visible
 var determinePosition = function(tip, element) {
     var $element, above, actualHeight, actualWidth, below, boundBottom, boundLeft, boundRight, boundTop, elementAbove, elementBelow, elementLeft, elementRight, isWithinBounds, left, pos, right;
     isWithinBounds = function(elementPosition) {
