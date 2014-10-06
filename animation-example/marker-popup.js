@@ -9,7 +9,7 @@ app.map.addOverlay(popup);
 
 // grabbed from stackoverflow
 // http://stackoverflow.com/questions/10238089/how-can-you-ensure-twitter-bootstrap-popover-windows-are-visible
-var determinePosition = function(tip, element) {
+var determinePlacement = function(tip, element) {
     var $element, above, actualHeight, actualWidth, below, boundBottom, boundLeft, boundRight, boundTop, elementAbove, elementBelow, elementLeft, elementRight, isWithinBounds, left, pos, right;
     isWithinBounds = function(elementPosition) {
       return boundTop < elementPosition.top && boundLeft < elementPosition.left && boundRight > (elementPosition.left + actualWidth) && boundBottom > (elementPosition.top + actualHeight);
@@ -79,14 +79,16 @@ app.map.on('click', function(evt) {
   if (feature) {
     var geometry = feature.getGeometry();
     var coord = geometry.getCoordinates();
-    popup.setPosition(coord);
-    $(popupElement).popover({
-      'placement': determinePosition,
-      'html': true,
-      'content': feature.get('name')
-    });
-    $(popupElement).popover('show');
-  } 
+    setTimeout( function() {
+      $(popupElement).popover({
+        'placement': determinePlacement,
+        'html': true,
+        'content': feature.get('name')
+      });
+      popup.setPosition(coord);
+      $(popupElement).popover('show');
+    }, 200); 
+  }
 });
 
 // change mouse cursor when over marker
