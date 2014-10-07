@@ -36,9 +36,13 @@ app.activateAnchor = function(index) {
     allAnchors = document.getElementsByClassName('carousel-indicator');
     for (var i=0; i < allAnchors.length; i++) {
         allAnchors[i].getElementsByTagName("icon")[0].className = "fa fa-circle-o";
+        if (allAnchors[i].className.indexOf("active") !== -1) {
+            allAnchors[i].className = allAnchors[i].className.replace(/active/g, '');
+        }
     }
     // anchor.getElementsByTagName("icon")[0].className = "fa fa-circle";
     allAnchors[index].getElementsByTagName("icon")[0].className = "fa fa-circle";
+    allAnchors[index].className += " active";
 };
 
 app.assignTestLocations = function() {

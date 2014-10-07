@@ -48,6 +48,9 @@ app.showTimeline = function() {
 };
 
 app.flyTo = function(index) {
+    if (app.animationIndex === index) {
+        return false;
+    }
     if (app.animationIndex === undefined) {
         var noBounce = true;
     }
