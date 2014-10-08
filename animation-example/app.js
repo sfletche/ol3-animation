@@ -69,7 +69,13 @@ app.assignTestLocations = function() {
             'start_date': '1973',
             'end_date': '1974',
             'center': [-9791652.457164913, 5140704.679113694],
-            'zoom': 9
+            'zoom': 9,
+            'markers': [
+                {
+                    'position': [-9791652.457164913, 5140704.679113694],
+                    'content': 'Lived for a year somewhere outside of Chicago...'
+                },
+            ]
         },
         {
             'location_name': 'San Diego, California',
