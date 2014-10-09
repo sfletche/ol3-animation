@@ -48,6 +48,7 @@ app.showTimeline = function() {
 };
 
 app.flyTo = function(index) {
+    app.destroyPopup();
     if (app.animationIndex === index) {
         return false;
     }
@@ -59,6 +60,7 @@ app.flyTo = function(index) {
 };
 
 app.flyLeft = function() {
+    app.destroyPopup();
     var newIndex = app.locations.length - 1;
     if (app.animationIndex && app.animationIndex > 0) {
         newIndex = app.animationIndex - 1;
@@ -68,6 +70,7 @@ app.flyLeft = function() {
 };
 
 app.flyRight = function() {
+    app.destroyPopup();
     var newIndex = 0;
     if (app.animationIndex !== undefined && app.animationIndex < app.locations.length - 1) {
         newIndex = app.animationIndex + 1;
