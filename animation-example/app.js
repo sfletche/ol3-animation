@@ -16,7 +16,7 @@ app.addCarouselIndicators = function() {
 
         var anchor = document.createElement("a");
         anchor.className = "carousel-indicator";
-        anchor.setAttribute("onclick","app.flyTo("+i+"); app.activateAnchor("+i+");"); 
+        anchor.setAttribute("onclick","app.flyTo("+i+")"); 
 
         var icon = document.createElement("icon");
         icon.className = "fa fa-circle-o";
@@ -208,3 +208,19 @@ app.assignTestLocations = function() {
 
 app.assignTestLocations();
 app.addCarouselIndicators();
+
+app.updateURL = function(index) {
+    var baseUrl = window.location.href.split('#')[0];
+    window.location.replace( baseUrl + '#' + 'mapview-' + index );
+}
+
+var isNumeric = function(value) {
+    return !isNaN(value);
+};
+
+window.onload = function() {
+    var hash = (window.location.hash).replace('#mapview-', '');
+    if ( isNumeric(hash) && hash !== '' ) {  
+        app.flyTo(parseInt(hash));
+    }
+};

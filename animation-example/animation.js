@@ -49,6 +49,7 @@ app.showTimeline = function() {
 
 app.flyTo = function(index) {
     app.destroyPopup();
+    app.activateAnchor(index);
     if (app.animationIndex === index) {
         return false;
     }
@@ -56,6 +57,7 @@ app.flyTo = function(index) {
         var noBounce = true;
     }
     app.showAnimation(index, noBounce);
+    app.updateURL(index);
     return false;
 };
 
