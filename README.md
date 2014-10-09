@@ -6,6 +6,7 @@ Note:  This project requires [OpenLayers 3](https://github.com/openlayers/ol3/re
 * add potential for multiple markers (with differentiated content) at a given map view
 * dynamically position marker popup according to position - done (in part)
  * need to deal with flash of prior popup appearing with icon is clicked...
+* build map view / indicator into url
 * how to display marker popups...?
  * display marker popups after fly to?  
  * one at a time?
