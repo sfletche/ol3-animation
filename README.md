@@ -9,7 +9,7 @@ Note:  This project requires [OpenLayers 3](https://github.com/openlayers/ol3/re
  * display marker popups after fly to?  
  * one at a time?
  * I think best UI is to show popups for all markers on the map view
-  * activate popups for all markers after zoom in
-  * de-activate popups when zooming out
+   * activate popups for all markers after zoom in
+   * de-activate popups when zooming out
 * adjust duration of animation based on distance travelled
 * do a little refactoring...encapsulate methods and variables better...
