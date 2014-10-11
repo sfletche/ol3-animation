@@ -53,7 +53,13 @@ app.locations = [
         'start_date': '1977',
         'end_date': '1978',
         'center': [-13134612.858978685, 3983632.804352021],
-        'zoom': 11
+        'zoom': 11,
+        'markers': [
+            {
+                'position': [-13132946.941890292, 3984264.724356413],
+                'content': 'Attended 2nd grade in Huntington Beach, CA'
+            }
+        ]
     },
     {
         'location_name': 'Vienna, Virginia',
