@@ -28,15 +28,25 @@ app.locations = [
             {
                 'position': [-9791652.457164913, 5140704.679113694],
                 'content': 'Lived for a year somewhere outside of Chicago...'
-            },
+            }
         ]
     },
     {
         'location_name': 'San Diego, California',
         'start_date': '1974',
         'end_date': '1977',
-        'center': [-13045543.88285731, 3861234.9352657003],
-        'zoom': 11
+        'center': [-13047149.060451297, 3869643.0083770687],
+        'zoom': 11,
+        'markers': [
+            {
+                'position': [-13045528.297137713, 3869657.3662425396],
+                'content': 'From the ages of 4-6 I lived in San Diego'
+            },
+            {
+                'position': [-13048458.551859058, 3879158.859870642],
+                'content': 'Attended La Jolla Country Day School for Kindergarten and first grade.'
+            }
+        ]
     },
     {
         'location_name': 'Huntington Beach, California',
