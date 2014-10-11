@@ -66,3 +66,8 @@ window.onload = function() {
         app.flyTo(parseInt(hash));
     }
 };
+
+window.addEventListener('click', function (evt) {
+    app.destroyPopup();
+}, false);
+
