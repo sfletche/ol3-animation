@@ -115,7 +115,8 @@ app.locations = [
         'start_date': '1998',
         'end_date': '1998',
         'center': [-20857057.6012507, -5012432.8117420925],
-        'zoom': 5
+        'zoom': 5,
+        'rotate': true
     },
     {
         'location_name': 'Chantilly, Virginia',

@@ -31,21 +31,21 @@ app.displayAddedLocation = function(index) {
     div.style.opacity = 1;
 };
 
-app.showTimeline = function() {
-    var x = 0;
-    if (!app.locations.length) {
-        app.assignTestLocations();
-        // app.addCarouselIndicators();
-    }
-    for (var index in app.locations) {         
-        if (x == 0) {
-            app.showAnimations(x, true);    
-        } else {
-            app.showAnimations(x);
-        }        
-        x++;
-    }
-};
+// app.showTimeline = function() {
+//     var x = 0;
+//     if (!app.locations.length) {
+//         app.assignTestLocations();
+//         // app.addCarouselIndicators();
+//     }
+//     for (var index in app.locations) {         
+//         if (x == 0) {
+//             app.showAnimations(x, true);    
+//         } else {
+//             app.showAnimations(x, false);
+//         }        
+//         x++;
+//     }
+// };
 
 app.flyTo = function(index) {
     app.destroyPopup();
@@ -93,9 +93,11 @@ app.showAnimation = function(index, noBounce) {
     var location = app.locations[index],
         view = app.map.getView(),
         center = view.getCenter(),
+        currentMapIndex = app.getCurrentMapIndex() || false,
         markers = location.markers,
         distance = Math.sqrt(Math.pow(center[0]-location.center[0],2)+Math.pow(center[1]-location.center[1],2)),
         resolution_from_distance = distance / 1000,
+        addRotation = location.rotate || (currentMapIndex && app.locations[currentMapIndex].rotate),
         duration = 4000,
         start = +new Date(),
         pan = ol.animation.pan({
@@ -104,18 +106,24 @@ app.showAnimation = function(index, noBounce) {
         }),
         bounce = ol.animation.bounce({
             duration: duration,
-            // resolution: 7000
             resolution: resolution_from_distance
+        }),
+        rotate = ol.animation.rotate({
+            duration: duration,
+            rotation: Math.PI,
+            start: start
         }),
         zoom = ol.animation.zoom({
             resolution: map.getView().getResolution(),
             duration: duration / 4
-        });
+        });        
     if (resolution_from_distance < 20) {
         resolution_from_distance = 20;
     }
     if (noBounce) {
         app.map.beforeRender(zoom);    
+    } else if (addRotation) {
+        app.map.beforeRender(pan, bounce, rotate, zoom);
     } else {
         app.map.beforeRender(pan, bounce, zoom);
     }
@@ -135,4 +143,5 @@ app.showAnimation = function(index, noBounce) {
 
     app.animationIndex = index;  
 };
+
 

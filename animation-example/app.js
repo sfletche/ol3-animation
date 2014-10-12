@@ -54,6 +54,21 @@ app.addCarouselIndicators();
 app.updateURL = function(index) {
     var baseUrl = window.location.href.split('#')[0];
     window.location.replace( baseUrl + '#' + 'mapview-' + index );
+};
+
+app.getCurrentMapIndex = function() {
+    try {
+        var hash = window.location.href.split('#')[1],
+            index = hash.replace('mapview-', '');
+        if (isNumeric(index)) {
+            return index;
+        } else {
+            return undefined;
+        }
+    } catch(e) {
+        return undefined;
+    }
+    
 }
 
 var isNumeric = function(value) {
