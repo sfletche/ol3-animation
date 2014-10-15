@@ -1,10 +1,5 @@
 var usa = ol.proj.transform([-99, 39], 'EPSG:4326', 'EPSG:3857');
 
-var view = new ol.View({
-  center: usa,
-  zoom: 3
-});
-
 var markers = new ol.layer.Vector({
   source: new ol.source.Vector({
     features: []
@@ -18,12 +13,18 @@ var markers = new ol.layer.Vector({
 app.markers = markers;
 
 var map = new ol.Map({
+  target: 'map',
   layers: [
     new ol.layer.Tile({
-      preload: 4,
-      source: new ol.source.OSM()
+      source: new ol.source.XYZ({
+        // ESRI Basemaps to explore...
+        // World_Street_Map, World_Topo_Map, World_Imagery, NatGeo_World_Map, World_Light_Gray_Base
+        url: 'http://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}'
+        // Others include 
+        // http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.png
+      })
     }),
-    markers,
+    markers
   ],
   renderer: exampleNS.getRendererFromQueryString(),
   target: document.getElementById('map'),
@@ -32,7 +33,10 @@ var map = new ol.Map({
       collapsible: false
     })
   }),
-  view: view
+  view: new ol.View({
+    center: usa,
+    zoom: 3
+  })
 });
 app.map = map;
 
