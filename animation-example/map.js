@@ -19,9 +19,9 @@ var map = new ol.Map({
       source: new ol.source.XYZ({
         // ESRI Basemaps to explore...
         // World_Street_Map, World_Topo_Map, World_Imagery, NatGeo_World_Map, World_Light_Gray_Base
-        url: 'http://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}'
+        // url: 'http://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}'
         // Others include 
-        // http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.png
+        url: 'http://tile.stamen.com/watercolor/{z}/{x}/{y}.png'
       })
     }),
     markers
