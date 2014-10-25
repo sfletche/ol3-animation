@@ -66,7 +66,14 @@ app.locations = [
         'start_date': '1978',
         'end_date': '1981',
         'center': [-8603108.966488985, 4707135.661937859],
-        'zoom': 15
+        'zoom': 15,
+        'markers': [
+            {
+                'position': [-8603108.966488985, 4707135.661937859],
+                // 'position': [38.9029577,-77.2888179],
+                'content': 'Lived in Vienna, VA from 3rd grade to 5th grade'
+            }
+        ]
     },
     {
         'location_name': 'Orem, Utah',
