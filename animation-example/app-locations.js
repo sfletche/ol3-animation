@@ -71,7 +71,12 @@ app.locations = [
             {
                 'position': [-8603108.966488985, 4707135.661937859],
                 // 'position': [38.9029577,-77.2888179],
-                'content': 'Lived in Vienna, VA from 3rd grade to 5th grade'
+                'content': 'Lived in Vienna, VA for 3 years (ages 8 to 11)'
+            },
+            {
+                'position': [-8603108.966488985, 4707135.661937859],
+                // 'position': [38.8963537,-77.2851553],
+                'content': 'Attended Flint Hill Elementary from 3rd grade to 5th grade'
             }
         ]
     },
